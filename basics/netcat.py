@@ -7,6 +7,7 @@ import sys
 import threading
 
 def execute(cmd):
+    print("Inside execute()")
     cmd = cmd.strip()
     
     if not cmd:
