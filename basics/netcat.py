@@ -55,7 +55,7 @@ class Netcat:
             sys.exit()
 
     def listen(self):
-        self.socket.bind((self.args.targer, self.args.port))
+        self.socket.bind((self.args.target, self.args.port))
         self.socket.listen(5)
 
         while True:
