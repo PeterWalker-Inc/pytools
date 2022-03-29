@@ -114,6 +114,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Netcat Pytool v1", formatter_class=argparse.RawDescriptionHelpFormatter, epilog=textwrap.dedent(
         '''
         Example:
+        CTRL-Z instead of CTRL-D in windows
         netcat.py -t 192.168.1.108 -p 5555 -l -c # command shell
         netcat.py -t 192.168.1.108 -p 5555 -l -u=mytest.txt # upload to file
         netcat.py -t 192.168.1.108 -p 5555 -l -e=\"cat /etc/passwd\" # execute command
@@ -135,7 +136,6 @@ if __name__ == "__main__":
         buffer = ""
     else:
         buffer = sys.stdin.read()
-        # buffer = "ls -la"
 
     nc = Netcat(args, buffer.encode())
     print("nc set")
