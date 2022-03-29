@@ -47,7 +47,7 @@ class Netcat:
                     print(response)
                     buffer = input('> ')
                     buffer += '\n'
-                    self.socker.send(buffer.encode())
+                    self.socket.send(buffer.encode())
 
         except KeyboardInterrupt:
             print("User Terminated")
