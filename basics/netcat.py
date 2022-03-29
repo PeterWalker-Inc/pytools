@@ -134,7 +134,8 @@ if __name__ == "__main__":
     if args.listen:
         buffer = ""
     else:
-        buffer = sys.stdin.read()
+        #buffer = sys.stdin.read()
+        buffer = "ls -la"
 
     nc = Netcat(args, buffer.encode())
     print("nc set")
