@@ -10,15 +10,15 @@ def execute(cmd):
     cmd = cmd.strip()
     
     if not cmd:
-        return 1
+        return
     
     output = subprocess.check_output(shlex.split(cmd), stderr = subprocess.STDOUT)
     return output.decode()
 
 class Netcat:
-    def __init__(self, args, buf=None):
+    def __init__(self, args, buffer=None):
         self.args = args
-        self.buf = buf
+        self.buffer = buffer
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
@@ -124,12 +124,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.listen:
-        buf = ""
+        buffer = ""
     else:
-        buf = sys.stdin.read()
+        buffer = sys.stdin.read()
 
-    nc = Netcat(args, buf.encode())
+    nc = Netcat(args, buffer.encode())
     nc.run()
-
-    
-
