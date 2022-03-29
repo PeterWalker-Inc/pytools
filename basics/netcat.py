@@ -23,12 +23,14 @@ class Netcat:
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     def run(self):
+        print("Inside run()")
         if self.args.listen:
             self.listen()
         else:
             self.send()
     
     def send(self):
+        print("Inside send()")
         self.socket.connect((self.args.target, self.args.port))
         if self.buffer:
             self.socket.send(self.buffer)
@@ -55,6 +57,7 @@ class Netcat:
             sys.exit()
 
     def listen(self):
+        print("Inside Listen")
         self.socket.bind((self.args.target, self.args.port))
         self.socket.listen(5)
 
@@ -64,6 +67,7 @@ class Netcat:
             client_thread.start()
 
     def handle(self, client_socket):
+        print("Inside Handle")
         if self.args.execute:
             output = execute(self.args.execute)
             client_socket.send(output.encode())
@@ -84,6 +88,7 @@ class Netcat:
             client_socket.send(message.encode())
         
         elif self.args.command:
+            print("Inside command")
             cmd_buffer = b''
             while True:
                 try:
@@ -122,6 +127,8 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--port", type=int, help="specified port", default=5555)
     parser.add_argument("-u", "--upload", help="upload file")
     args = parser.parse_args()
+
+    print("Inside Main")
 
     if args.listen:
         buffer = ""
