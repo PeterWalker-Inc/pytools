@@ -131,12 +131,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print("Inside Main")
-
+    print(args)
     if args.listen:
         buffer = ""
     else:
         buffer = sys.stdin.read()
 
     nc = Netcat(args, buffer.encode())
-    print("nc set")
     nc.run()
