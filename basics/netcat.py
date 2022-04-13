@@ -74,10 +74,14 @@ class Netcat:
             client_socket.send(output.encode())
 
         elif self.args.upload:
+            print("inside upload")
             file_buffer = b''
             while True:
+                print("inside while uplosd")
                 data = client_socket.recv(4096)
+                print(len(data))
                 if data:
+                    print("inside if data")
                     file_buffer += data
                 else:
                     break
@@ -116,7 +120,7 @@ if __name__ == "__main__":
         Example:
         CTRL-Z instead of CTRL-D in windows
         netcat.py -t 192.168.1.108 -p 5555 -l -c # command shell
-        netcat.py -t 192.168.1.108 -p 5555 -l -u=mytest.txt # upload to file
+        netcat.py -t 192.168.1.108 -p 5555 -l -u=mytest.txt # upload to a file
         netcat.py -t 192.168.1.108 -p 5555 -l -e=\"cat /etc/passwd\" # execute command
         echo 'ABC' | ./netcat.py -t 192.168.1.108 -p 135 # echo text to server port 135
         netcat.py -t 192.168.1.108 -p 5555 # connect to server
