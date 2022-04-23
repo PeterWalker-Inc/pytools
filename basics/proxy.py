@@ -25,7 +25,13 @@ def hexdump(src, length=16, show=True):
         return result
 
 def server_loop(lh, lp, rh, rp, r_f):
-    sd
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    try:
+        server.bind((lh, lp))
+    except Exception e:
+        _
+        
 
 def main():
     if len(sys.argv[1:]) != 5:
