@@ -117,14 +117,14 @@ def main():
         print("Example: ./proxy 127.0.0.1 9000 192.168.0.6 7865 True")
 
     localhost = sys.argv[1]
-    localport = sys.argv[2]
+    localport = int(sys.argv[2])
     remotehost = sys.argv[3]
-    remoteport = sys.argv[4]
+    remoteport = int(sys.argv[4])
     receive_first = sys.argv[5]
 
     if "True" in str(receive_first):
         receive_first = True
-    else
+    else:
         receive_first = False
 
     server_loop(localhost, localport, remotehost, remoteport, receive_first)
